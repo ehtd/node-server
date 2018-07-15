@@ -1,6 +1,14 @@
 {
+  "scripts": {
+    "docker:start": "node server.js",
+    "docker:build": "docker build -t api .",
+    "docker:run": "docker run -p 8000:8000 api",
+    "docker:list": "docker ps -a",
+    "docker:stop": "docker stop $(docker ps -a -q)",
+    "docker:remove:all": "docker rm $(docker ps -a -q)",
+    "docker:image:clean": "docker images -a | grep 'none' | awk '{print $3}' | xargs docker rmi"
+  },
   "dependencies": {
-    "hapi": "^17.5.2",
-    "nodemon": "^1.17.5"
+    "hapi": "^17.5.2"
   }
 }

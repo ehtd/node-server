@@ -2,11 +2,12 @@ FROM node:9.5.0
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
+COPY yarn.lock ./
+COPY ./api ./
 
-RUN yarn global add nodemon
 RUN yarn
 
-EXPOSE 4000
+EXPOSE 8000
 
-CMD ["nodemon", "server.js"]
+CMD ["yarn", "run", "docker:start"]
